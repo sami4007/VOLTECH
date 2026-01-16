@@ -1,0 +1,88 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url("../images/userSignup.png") no-repeat center center / cover;
+}
+
+.USignuppage-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.USignupoverlay-box {
+    width: 700px;
+    padding: 45px 55px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.USignupform-title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 35px;
+}
+
+.USignupform-group {
+    margin-bottom: 22px;
+}
+
+.USignupform-group label {
+    display: inline-block;
+    width: 200px;
+    font-size: 16px;
+}
+
+.USignupform-group input {
+    width: 380px;
+    height: 35px;
+    padding: 6px 10px;
+    border: none;
+    outline: none;
+}
+
+.USignuperror {
+    display: block;
+    margin-left: 200px;
+    margin-top: 5px;
+    color: #ff4d4d;
+    font-size: 13px;
+}
+
+.USignupbutton-group {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.USignupRegister-btn,
+.USignupClear-btn,
+.USignupback-btn button {
+    padding: 8px 30px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.USignupRegister-btn:hover,
+.USignupClear-btn:hover,
+.USignupback-btn button:hover {
+    background: #fff;
+    color: #000;
+}
+
+.USignupback-btn {
+    margin-top: 30px;
+}
