@@ -40,6 +40,7 @@
 
     <div class="button-group">
         <button type="submit" class="btn">Login</button>
+        <a href="usersignup.php" class="btn">Register</a>
         <a href="home.php" class="btn">Back</a>
     </div>
 
