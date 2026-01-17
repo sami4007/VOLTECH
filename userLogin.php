@@ -1,5 +1,6 @@
 <?php
 // userLogin.php
+// (No backend logic yet – frontend validation only)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,44 +14,43 @@
 <body>
 
 <div class="user-wrapper">
-
     <div class="user-overlay">
 
-     <form id="loginForm" class="admin-form" novalidate>
+        <form id="userLoginForm" class="admin-form" novalidate>
 
-    <div class="form-row">
+            <div class="form-row">
 
-        <div class="form-left">
-            <div class="field">
-                <label>Username</label>
-                <input type="text" id="username">
+                <div class="form-left">
+                    <div class="field">
+                        <label>Username</label>
+                        <input type="text" id="userUsername">
+                    </div>
+
+                    <div class="field">
+                        <label>Password</label>
+                        <input type="password" id="userPassword">
+                    </div>
+                </div>
+
+                <div class="form-right">
+                    <img src="assets/images/admin.png" alt="User Icon">
+                </div>
+
             </div>
 
-            <div class="field">
-                <label>Password</label>
-                <input type="password" id="password">
+            <div class="button-group">
+                <button type="submit" class="btn">Login</button>
+                <a href="usersignup.php" class="btn">Register</a>
+                <a href="home.php" class="btn">Back</a>
             </div>
-        </div>
 
-        <div class="form-right">
-            <img src="assets/images/admin.png" alt="Admin Icon">
-        </div>
+        </form>
 
     </div>
-
-    <div class="button-group">
-        <button type="submit" class="btn">Login</button>
-        <a href="usersignup.php" class="btn">Register</a>
-        <a href="home.php" class="btn">Back</a>
-    </div>
-
-</form>
-
-
-    </div>
-
 </div>
-<script src="assets/js/loginValidation.js"></script>
+
+<!-- User JS -->
+<script src="assets/js/userLoginValidation.js"></script>
 
 </body>
 </html>

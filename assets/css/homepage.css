@@ -47,6 +47,26 @@
 }
 
 
+/* ===== WELCOME TEXT ===== */
+.welcome-text1 {
+    margin-left: auto;        /* pushes it to the right */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ===== WELCOME TEXT ===== */
+.welcome-text2 {
+    margin-left: auto;        /* pushes it to the right */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
 /* ===== SLIDER ===== */
 .slider-container {
     position: relative;
