@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Full-screen page */
+.page {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Background images */
+.about1 {
+    background-image: url("/WebTech/assets/images/about1.jpg");
+}
+
+.about2 {
+    background-image: url("/WebTech/assets/images/about2.jpg");
+}
+
+.about3 {
+    background-image: url("/WebTech/assets/images/about3.jpg");
+}
+
+/* CENTERED TEXT BOX */
+.center-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: rgba(255, 255, 255, 0.92);
+    padding: 45px;
+
+    width: 70%;
+    max-width: 900px;
+
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.7;
+
+    border-radius: 14px;
+}
+
+/* Navigation buttons */
+.nav-btn {
+    position: absolute;
+    bottom: 50px; /* 🔼 lifted up */
+    padding: 12px 26px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.back {
+    left: 30px;
+}
+
+.next {
+    right: 30px;
+}
