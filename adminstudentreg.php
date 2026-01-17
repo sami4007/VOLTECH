@@ -81,9 +81,11 @@
         </div>
 
         <div class="astudentregbuttons">
-            <button type="button">BACK</button>
-            <button type="submit">CONFIRM REGISTRATION</button>
-        </div>
+                <a href="homepage1.php" class="back-link">
+                    <button type="button">BACK</button>
+                </a>
+                <button type="submit">CONFIRM REGISTRATION</button>
+            </div>
 
     </form>
 
