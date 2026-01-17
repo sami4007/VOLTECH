@@ -47,6 +47,7 @@
                 </div>
 
                 <div class="USignupback-btn">
+                    <a href="UserLogin.php">
                     <button type="button">Back</button>
                 </div>
             </form>
