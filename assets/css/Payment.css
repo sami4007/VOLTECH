@@ -1,0 +1,135 @@
+/* ============ RESET ============ */  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ============ PAGE BACKGROUND ============ */
+body {
+    background-image: url("/Project/VOLTECH/assets/images/payment.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ============ MAIN CONTAINER ============ */
+.payment-page {
+    max-width: 950px;
+    margin: auto;
+    padding: 60px 40px; 
+    text-align: center;
+}
+
+/* ============ HEADINGS ============ */
+h1 {
+    font-size: 44px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 22px;
+    margin-bottom: 45px;
+}
+
+/* ============ PAYMENT METHODS ============ */
+.payment-methods {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.payment-methods label {
+    cursor: pointer;
+}
+
+/* 🔥 LOGOS — BIGGER & SAME SIZE */
+.payment-methods img {
+    width: 170px;
+    height: 110px;
+    object-fit: contain;
+    padding: 10px;
+    border-radius: 14px;
+    border: 3px solid transparent;
+    background-color: white;
+    transition: 0.3s ease;
+}
+
+/* Hide default radio */
+.payment-methods input {
+    display: none;
+}
+
+/* Selected effect */
+.payment-methods input:checked + img {
+    border-color: #555;
+    transform: scale(1.05);
+}
+
+/* ============ INPUT SECTIONS ============ */
+.card-section,
+.mobile-section {
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+    max-width: 540px;
+    margin: 25px auto;
+}
+
+.card-section h2,
+.mobile-section h2 {
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.card-section input,
+.mobile-section input {
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #999;
+     background-color: rgba(245, 245, 245, 0.85); /* transparent input */
+}
+
+
+/* ============ CARD ROW (EXPIRY + CVV SIDE BY SIDE) ============ */
+.card-row {
+    display: flex;
+    gap: 20px;
+}
+
+.card-row input {
+    flex: 1;
+}
+
+/* Mobile section hidden initially */
+.mobile-section {
+    display: none;
+}
+
+/* ============ BUTTONS ============ */
+.btn-group {
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-group button {
+    padding: 16px 34px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #444;
+    background-color: rgba(245, 245, 245, 0.85); /* transparent buttons */
+}
+
+
+.btn-group button:hover {
+    background-color: #e0e0e0;
+}
