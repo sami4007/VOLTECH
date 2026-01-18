@@ -15,7 +15,7 @@
 <nav class="navbar">
     <a href="#">New Information</a>
     <a href="adminstudentreg.php">New Entry</a>
-    <a href="#">Fee Details</a>
+    <a href="#">Fund Management</a>
     <a href="#">About</a>
     <a href="home.php">Exit</a>
      

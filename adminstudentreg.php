@@ -1,6 +1,43 @@
 <?php
+require_once "assets/database/dbconn.php";
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $student_name = $_POST['adminregstudent_name'];
+    $father_name  = $_POST['adminregfather_name'];
+    $mother_name  = $_POST['adminregmother_name'];
+    $age          = $_POST['adminregage'];
+    $phone_number = $_POST['adminregphone'];
+    $email        = $_POST['adminregemail'];
+    $address      = $_POST['adminregaddress'];
+    $student_id   = $_POST['adminregstudent_id'];
+
+    $sql = "INSERT INTO students 
+        (student_name, father_name, mother_name, age, phone_number, email, address, student_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param(
+        $stmt,
+        "sssissss",
+        $student_name,
+        $father_name,
+        $mother_name,
+        $age,
+        $phone_number,
+        $email,
+        $address,
+        $student_id
+    );
+
+    mysqli_stmt_execute($stmt);
+
+    header("Location: adminstudentreg.php?success=1");
+    exit;
+}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,6 +127,14 @@
     </form>
 
 </div>
+
+<?php if (isset($_GET['success'])): ?>
+<script>
+    alert("Registration successful!");
+    window.location.href = "homepage1.php";
+</script>
+<?php endif; ?>
+
 
 <script src="assets/js/adminstudentreg.js"></script>
 </body>
