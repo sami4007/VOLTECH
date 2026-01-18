@@ -1,39 +1,50 @@
 <?php
-
+// ViewStudentDetails.php
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Student Details</title>
+    <title>View Student Details</title>
     <link rel="stylesheet" href="ustudentdetails.css">
 </head>
 
 <body>
 
-<div class="top-bar">
-    <div class="left-section">
-        <label>Search by name</label>
-        <input type="text" id="studentName">
-        <br><br>
-        <button onclick="searchStudent()">Search</button>
+    <div class="student-page">
 
-        <a href="homepage2.php" class="cancel-link">
-            <button type="button">back</button>
-        </a>
-        
+        <h1>Student Details</h1>
+
+        <div class="content-wrapper">
+
+            <div class="input-section">
+                <h2>Search Student</h2>
+
+                <label>Search by Name</label>
+                <input type="text" id="studentName" placeholder="Enter student name">
+
+                <div class="btn-group">
+                    <button type="button" onclick="searchStudent()">Search</button>
+                    <button type="button" onclick="clearSearch()">Cancel</button>
+                    <a href="homepage2.php" class="cancel-link">
+                        <button type="button">Back</button>
+                    </a>
+
+
+                </div>
+            </div>
+
+            <div class="result-section" id="resultSection">
+     
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="right-section">
-        <h1>Student details</h1>
-    </div>
-</div>
-
-
-<div id="resultSection" ></div>
-
-<script src="ustudentdetails.js"></script>
+    <script src="ustudentdetails.js"></script>
 </body>
-</html>
 
+</html>
