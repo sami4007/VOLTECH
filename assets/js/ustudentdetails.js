@@ -6,7 +6,7 @@ function searchStudent() {
         return;
     }
 
-   
+    // Placeholder for future database search
     document.getElementById("resultSection").innerHTML =
         "<p>Searching for student: <strong>" + name + "</strong></p>";
 }
