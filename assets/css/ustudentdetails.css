@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("ustudentdeta.jpg"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1; 
+    filter: blur(11px);        
+    transform: scale(1.05);
+}
+
+
+.top-bar {
+    background-color: #bef9c9;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    position: relative; 
+}
+
+
+.left-section label {
+    font-weight: bold;
+}
+
+.left-section input {
+    width: 200px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.left-section button {
+    width: 80px;
+    height: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+.cancel-link {
+    text-decoration: none;
+}
+
+.cancel-link button {
+    width: 80px;
+    height: 25px;
+    cursor: pointer;
+}
+
+
+.right-section {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.right-section h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+#resultSection {
+    margin: 30px;
+    font-size: 16px;
+    font-weight: bold;
+}
