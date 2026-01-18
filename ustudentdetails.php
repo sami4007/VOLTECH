@@ -19,7 +19,7 @@
         <br><br>
         <button onclick="searchStudent()">Search</button>
 
-        <a href="homepage1.php" class="cancel-link">
+        <a href="homepage2.php" class="cancel-link">
             <button type="button">back</button>
         </a>
         
