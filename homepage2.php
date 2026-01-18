@@ -1,5 +1,5 @@
 <?php
-// Home Page
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,10 @@
     <a href="home.php">Exit</a>
 
     <!-- Right side text -->
-    <span class="welcome-text2">Welcome User</span>
+    <span class="welcome-text2">
+    Welcome <?php echo $_SESSION['username']; ?>
+</span>
+
 </nav>
 
 
