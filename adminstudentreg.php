@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Student Registration</title>
-    <link rel="stylesheet" href="adminstudentreg.css">
+    <link rel="stylesheet" href="assets/css/adminstudentreg.css">
 </head>
 <body>
 
@@ -91,6 +91,6 @@
 
 </div>
 
-<script src="adminstudentreg.js"></script>
+<script src="assets/js/adminstudentreg.js"></script>
 </body>
 </html>
