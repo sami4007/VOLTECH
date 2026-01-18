@@ -36,8 +36,8 @@ form.addEventListener("submit", function (event) {
     if (inputs[4].value.trim() === "") {
         error[4].innerHTML = "Phone number is required.";
         ok = false;
-    } else if (!/^[0-9]{10}$/.test(inputs[4].value)) {
-        error[4].innerHTML = "Phone number must be exactly 10 digits.";
+    } else if (!/^[0-9]{11}$/.test(inputs[4].value)) {
+        error[4].innerHTML = "Phone number must be exactly 11 digits.";
         ok = false;
     } else error[4].innerHTML = "";
 
@@ -57,7 +57,7 @@ form.addEventListener("submit", function (event) {
     if (inputs[7].value.trim() === "") {
         error[7].innerHTML = "Student ID is required.";
         ok = false;
-    } else if (isNaN(inputs[7].value)) {
+    } else if (!/^[0-9-]+$/.test(inputs[7].value)) {
         error[7].innerHTML = "Student ID must be a number.";
         ok = false;
     } else error[7].innerHTML = "";

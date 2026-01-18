@@ -1,5 +1,5 @@
 <?php
-// Home Page
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,15 +13,20 @@
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
-    <a href="#">New Information</a>
-    <a href="adminstudentreg.php">New Entry</a>
-    <a href="#">Fund Management</a>
+    <a href="#">View Details</a>
+    <a href="#">Payment</a>
+    <a href="#">Fee Details</a>
     <a href="#">About</a>
     <a href="home.php">Exit</a>
-     
+
     <!-- Right side text -->
-    <span class="welcome-text1">Welcome Admin</span>
+    <span class="welcome-text2">
+    Welcome <?php echo $_SESSION['username']; ?>
+</span>
+
 </nav>
+
+
 
 <!-- ===== SLIDER SECTION ===== -->
 <div class="slider-container">

@@ -1,4 +1,26 @@
 <?php
+require_once "assets/database/dbconn.php";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $email    = $_POST['USignupemail'];
+    $fullname = $_POST['USignupfullname'];
+    $username = $_POST['USignupusername'];
+    $password = $_POST['USignuppassword'];
+
+    $sql = "INSERT INTO regtable (email, fullname, username, pass)
+            VALUES (?, ?, ?, ?)";
+
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "ssss",
+        $email, $fullname, $username, $password
+    );
+
+    mysqli_stmt_execute($stmt);
+
+    header("Location: userLogin.php");
+    exit;
+}
 
 ?>
 <!DOCTYPE html>
@@ -47,6 +69,7 @@
                 </div>
 
                 <div class="USignupback-btn">
+                    <a href="UserLogin.php">
                     <button type="button">Back</button>
                 </div>
             </form>
@@ -55,5 +78,4 @@
     <script src="assets/js/usersignup.js"></script>
 
 </body>
-
 </html>

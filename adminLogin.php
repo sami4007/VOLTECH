@@ -1,5 +1,6 @@
 <?php
 // adminLogin.php
+// (No backend logic yet – frontend validation only)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,19 +16,19 @@
 <div class="admin-wrapper">
     <div class="admin-overlay">
 
-        <form id="loginForm" class="admin-form" novalidate>
+        <form id="adminLoginForm" class="admin-form" novalidate>
 
             <div class="form-row">
 
                 <div class="form-left">
                     <div class="field">
                         <label>Username</label>
-                        <input type="text" id="username">
+                        <input type="text" id="adminUsername">
                     </div>
 
                     <div class="field">
                         <label>Password</label>
-                        <input type="password" id="password">
+                        <input type="password" id="adminPassword">
                     </div>
                 </div>
 
@@ -47,11 +48,8 @@
     </div>
 </div>
 
-
-
-
-<script src="assets/js/loginValidation.js"></script>
-
+<!-- Admin JS -->
+<script src="assets/js/adminLoginValidation.js"></script>
 
 </body>
 </html>
