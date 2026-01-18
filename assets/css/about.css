@@ -23,16 +23,17 @@ html, body {
 
 /* Background images */
 .about1 {
-    background-image: url("/WebTech/assets/images/about1.jpg");
+    background-image: url("/Project/VOLTECH/assets/images/about1.png");
 }
 
 .about2 {
-    background-image: url("/WebTech/assets/images/about2.jpg");
+    background-image: url("/Project/VOLTECH/assets/images/about2.png");
 }
 
 .about3 {
-    background-image: url("/WebTech/assets/images/about3.jpg");
+    background-image: url("/Project/VOLTECH/assets/images/about3.png");
 }
+
 
 /* CENTERED TEXT BOX */
 .center-box {
