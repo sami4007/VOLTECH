@@ -1,5 +1,10 @@
 <?php
 session_start();
+/*
+if (!isset($_SESSION['user_logged_in'])) {
+    header("Location: userLogin.php");
+    exit();
+} */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,9 +18,9 @@ session_start();
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
-    <a href="#">View Details</a>
-    <a href="#">Payment</a>
-    <a href="#">Fee Details</a>
+    <a href="ustudentdetails.php">View Details</a>
+    <a href="Payment.php">Payment</a>
+    <a href="FeeStructure.php">Fee Details</a>
     <a href="#">About</a>
     <a href="home.php">Exit</a>
 
