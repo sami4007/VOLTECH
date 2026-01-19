@@ -1,10 +1,12 @@
 <?php
-require_once "assets/database/dbconn.php";
-
+session_start();
 if (!isset($_SESSION['admin_logged_in'])) {
     header("Location: adminLogin.php");
     exit();
 }
+
+require_once "assets/database/dbconn.php";
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 

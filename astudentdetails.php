@@ -5,7 +5,7 @@ require_once "assets/database/dbconn.php";
 if (!isset($_SESSION['admin_logged_in'])) {
     header("Location: adminLogin.php");
     exit();
-}
+} 
 
 $student = null;
 $students = [];
