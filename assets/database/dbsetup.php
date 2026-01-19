@@ -43,4 +43,21 @@ $sql2 = "CREATE TABLE IF NOT EXISTS students (
 
 mysqli_query($conn, $sql2);
 
+$sql3 = "CREATE TABLE IF NOT EXISTS admin (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    pass VARCHAR(100) NOT NULL
+)";
+
+mysqli_query($conn, $sql3);
+
+$sql4 = "INSERT IGNORE INTO admin (username, pass)
+        VALUES 
+        ('sami4007', 'sami4007'),
+        ('nabil4007', 'nabil4007'),
+        ('bn4007', 'bn4007')";
+mysqli_query($conn, $sql4);
+
+echo "<h3>Database setup completed successfully.</h3>";
+
 ?>

@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+$backLink = "home.php"; // guest default
+
+if (isset($_SESSION['admin_logged_in'])) {
+    $backLink = "homepage1.php";
+} elseif (isset($_SESSION['user_logged_in'])) {
+    $backLink = "homepage2.php";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,12 +32,20 @@
         </p>
     </div>
 
-    <button class="nav-btn back" onclick="goBack('homepage1.php')">Back</button>
-    <button class="nav-btn next" onclick="goNext('about2.php')">Next</button>
+    <!-- BACK (session-aware) -->
+    <a href="<?= $backLink ?>">
+        <button class="nav-btn back">Back</button>
+    </a>
 
+    <!-- NEXT (static flow) -->
+    <button class="nav-btn next" onclick="goNext('about2.php')">Next</button>
 </div>
 
-<script src="assets/js/about.js"></script>
+<script>
+function goNext(page) {
+    window.location.href = page;
+}
+</script>
 
 </body>
 </html>

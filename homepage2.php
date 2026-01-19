@@ -1,10 +1,10 @@
 <?php
 session_start();
-/*
+
 if (!isset($_SESSION['user_logged_in'])) {
     header("Location: userLogin.php");
     exit();
-} */
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +21,8 @@ if (!isset($_SESSION['user_logged_in'])) {
     <a href="ustudentdetails.php">View Details</a>
     <a href="Payment.php">Payment</a>
     <a href="FeeStructure.php">Fee Details</a>
-    <a href="#">About</a>
-    <a href="home.php">Exit</a>
+    <a href="about.php">About</a>
+    <a href="userlogout.php">Log Out</a>
 
     <!-- Right side text -->
     <span class="welcome-text2">
