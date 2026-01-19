@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$backLink = "home.php"; // guest default
+$backLink = "home.php";
 
 if (isset($_SESSION['admin_logged_in'])) {
     $backLink = "homepage1.php";
@@ -39,13 +39,13 @@ if (isset($_SESSION['admin_logged_in'])) {
 
     <!-- NEXT (static flow) -->
     <button class="nav-btn next" onclick="goNext('about2.php')">Next</button>
-</div>
+    </div>
 
-<script>
-function goNext(page) {
+     <script>
+    function goNext(page) {
     window.location.href = page;
-}
-</script>
+    }
+    </script>
 
 </body>
 </html>
