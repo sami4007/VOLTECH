@@ -13,7 +13,7 @@
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
-    <a href="#">New Information</a>
+    <a href="astudentdetails.php">New Information</a>
     <a href="adminstudentreg.php">New Entry</a>
     <a href="adminfundmanage.php">Fund Management</a>
     <a href="#">About</a>
