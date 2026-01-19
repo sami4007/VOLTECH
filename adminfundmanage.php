@@ -50,6 +50,7 @@
         </form>
 
     </div>
+    <script src="assets/js/adminfundmanage.js"></script>
 
 </body>
 
