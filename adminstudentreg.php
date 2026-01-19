@@ -1,6 +1,11 @@
 <?php
 require_once "assets/database/dbconn.php";
 
+if (!isset($_SESSION['admin_logged_in'])) {
+    header("Location: adminLogin.php");
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $student_name = $_POST['adminregstudent_name'];

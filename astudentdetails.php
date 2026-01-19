@@ -2,12 +2,10 @@
 session_start();
 require_once "assets/database/dbconn.php";
 
-/* 🔐 ADMIN SESSION CHECK 
 if (!isset($_SESSION['admin_logged_in'])) {
     header("Location: adminLogin.php");
     exit();
 }
-*/
 
 $student = null;
 $students = [];
