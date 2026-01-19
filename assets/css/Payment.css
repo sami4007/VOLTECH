@@ -8,7 +8,7 @@
 
 /* ============ PAGE BACKGROUND ============ */
 body {
-    background-image: url("/Project/VOLTECH/assets/images/payment.png");
+    background-image: url("../images/payment.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

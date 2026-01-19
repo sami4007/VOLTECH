@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Payment Portal</title>
-    <link rel="stylesheet" href="/Project/VOLTECH/assets/css/Payment.css">
+    <link rel="stylesheet" href="assets/css/Payment.css">
 </head>
 <body>
 
@@ -16,22 +16,22 @@
     <div class="payment-methods">
         <label>
             <input type="radio" name="paymentMethod" value="card" checked>
-            <img src="/Project/VOLTECH/assets/images/Card.jpg" alt="Card">
+            <img src="assets/images/Card.jpg" alt="Card">
         </label>
 
         <label>
             <input type="radio" name="paymentMethod" value="bkash">
-            <img src="/Project/VOLTECH/assets/images/bkash.jpg" alt="Bkash">
+            <img src="assets/images/bkash.jpg" alt="Bkash">
         </label>
 
         <label>
             <input type="radio" name="paymentMethod" value="nagad">
-            <img src="/Project/VOLTECH/assets/images/nagad.jpg" alt="Nagad">
+            <img src="assets/images/nagad.jpg" alt="Nagad">
         </label>
 
         <label>
             <input type="radio" name="paymentMethod" value="rocket">
-            <img src="/Project/VOLTECH/assets/images/rocket.png" alt="Rocket">
+            <img src="assets/images/rocket.png" alt="Rocket">
         </label>
     </div>
 
@@ -65,6 +65,6 @@
 
 </div>
 
-<script src="/Project/VOLTECH/assets/js/Payment.js"></script>
+<script src="assets/js/Payment.js"></script>
 </body>
 </html>

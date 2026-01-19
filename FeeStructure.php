@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Fee Structure</title>
-    <link rel="stylesheet" href="/Project/VOLTECH/assets/css/FeeStructure.css">
+    <link rel="stylesheet" href="assets/css/FeeStructure.css">
 </head>
 <body>
 

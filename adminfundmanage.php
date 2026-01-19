@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Fund Management</title>
-    <link rel="stylesheet" href="adminfundmanage.css">
+    <link rel="stylesheet" href="assets/css/adminfundmanage.css">
 </head>
 
 <body>

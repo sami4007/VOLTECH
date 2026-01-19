@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>About - VolTec</title>
-    <link rel="stylesheet" href="/Project/VOLTECH/assets/css/about.css">
+    <link rel="stylesheet" href="assets/css/about.css">
 
 </head>
 <body>
@@ -24,7 +24,7 @@
 
 </div>
 
-<script src="/Project/VOLTECH/assets/js/about.js"></script>
+<script src="assets/js/about.js"></script>
 
 </body>
 </html>

@@ -23,7 +23,7 @@ html, body {
     position: fixed;
     inset: 0;
 
-    background-image: url("ViewStudentDetails.jpg"); 
+    background-image: url("../images/ViewStudentDetails.jpg"); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

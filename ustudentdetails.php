@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>View Student Details</title>
-    <link rel="stylesheet" href="ustudentdetails.css">
+    <link rel="stylesheet" href="assets/css/ustudentdetails.css">
 </head>
 
 <body>
@@ -44,7 +44,7 @@
 
     </div>
 
-    <script src="ustudentdetails.js"></script>
+    <script src="assets/js/ustudentdetails.js"></script>
 </body>
 
 </html>
