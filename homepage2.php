@@ -37,8 +37,10 @@ if (!isset($_SESSION['user_logged_in'])) {
 <div class="slider-container">
 
     <div class="slide active" style="background-image: url('assets/images/slide1.png');"></div>
-    <div class="slide" style="background-image: url('assets/images/slide2.jpg');"></div>
-    <div class="slide" style="background-image: url('assets/images/slide3.jpg');"></div>
+    <div class="slide" style="background-image: url('assets/images/slide2.png');"></div>
+    <div class="slide" style="background-image: url('assets/images/slide3.png');"></div>
+    <div class="slide" style="background-image: url('assets/images/slide4.png');"></div>
+    <div class="slide" style="background-image: url('assets/images/slide5.png');"></div>
 
     <div class="slider-title">
         STUDENT MANAGEMENT PORTAL
