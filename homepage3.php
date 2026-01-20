@@ -1,10 +1,12 @@
 <?php
 session_start();
-if (!isset($_SESSION['mod_logged_in'])) {
-    header("Location: modLogin.php");
-    exit();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'moderator') {
+    header("Location: home.php");
+    exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +20,8 @@ if (!isset($_SESSION['mod_logged_in'])) {
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
     <a href="astudentdetails.php">New Information</a>
-    <a href="about.php">About</a>
-    <a href="modLogout.php">Log Out</a>
+    <a href="about3.php">About</a>
+    <a href="controllers/AuthController.php?action=logout">Logout</a>
      
     <!-- Right side text -->
     <span class="welcome-text1">Welcome Moderator</span>

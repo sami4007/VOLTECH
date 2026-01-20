@@ -1,11 +1,14 @@
 <?php
-
 session_start();
 
-if (!isset($_SESSION['user_logged_in'])) {
+/* ================= ACCESS CONTROL ================= */
+if (
+    !isset($_SESSION['role']) ||
+    $_SESSION['role'] !== 'user'
+) {
     header("Location: userLogin.php");
     exit();
-} 
+}
 
 require_once "assets/database/dbconn.php";
 
@@ -14,19 +17,19 @@ $errorMsg = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $student_id   = trim($_POST['student_id']);
-    $student_name = trim($_POST['student_name']);
+    $student_id   = trim($_POST['student_id'] ?? "");
+    $student_name = trim($_POST['student_name'] ?? "");
 
     if ($student_id === "" || $student_name === "") {
         $errorMsg = "Both Student ID and Name are required.";
     } else {
-        $sql = "SELECT * FROM students 
-                WHERE student_id = ? AND student_name = ?";
 
-        $stmt = $conn->prepare($sql);
+        $stmt = $conn->prepare(
+            "SELECT * FROM students
+             WHERE student_id = ? AND student_name = ?"
+        );
         $stmt->bind_param("ss", $student_id, $student_name);
         $stmt->execute();
-
         $result = $stmt->get_result();
 
         if ($result->num_rows === 1) {
@@ -37,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,9 +68,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="btn-group">
                     <button type="submit">Search</button>
                     <button type="reset">Clear</button>
-                    <a href="homepage2.php" class="cancel-link">
-                        <button type="button">Back</button>
-                    </a>
+                    <button type="button"
+                            onclick="window.location.href='homepage2.php'">
+                        Back
+                    </button>
                 </div>
             </form>
         </div>
@@ -80,42 +83,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <h2>Student Information</h2>
 
                 <table class="student-table">
-                    <tr>
-                        <th>Student ID</th>
-                        <td><?= htmlspecialchars($student['student_id']) ?></td>
-                    </tr>
-                    <tr>
-                        <th>Name</th>
-                        <td><?= htmlspecialchars($student['student_name']) ?></td>
-                    </tr>
-                    <tr>
-                        <th>Father Name</th>
-                        <td><?= htmlspecialchars($student['father_name']) ?></td>
-                    </tr>
-                    <tr>
-                        <th>Mother Name</th>
-                        <td><?= htmlspecialchars($student['mother_name']) ?></td>
-                    </tr>
-                    <tr>
-                        <th>Age</th>
-                        <td><?= htmlspecialchars($student['age']) ?></td>
-                    </tr>
-                    <tr>
-                        <th>Phone</th>
-                        <td><?= htmlspecialchars($student['phone_number']) ?></td>
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td><?= htmlspecialchars($student['email']) ?></td>
-                    </tr>
-                    <tr>
-                        <th>Address</th>
-                        <td><?= htmlspecialchars($student['address']) ?></td>
-                    </tr>
+                    <tr><th>Student ID</th><td><?= htmlspecialchars($student['student_id']) ?></td></tr>
+                    <tr><th>Name</th><td><?= htmlspecialchars($student['student_name']) ?></td></tr>
+                    <tr><th>Father Name</th><td><?= htmlspecialchars($student['father_name']) ?></td></tr>
+                    <tr><th>Mother Name</th><td><?= htmlspecialchars($student['mother_name']) ?></td></tr>
+                    <tr><th>Age</th><td><?= htmlspecialchars($student['age']) ?></td></tr>
+                    <tr><th>Phone</th><td><?= htmlspecialchars($student['phone_number']) ?></td></tr>
+                    <tr><th>Email</th><td><?= htmlspecialchars($student['email']) ?></td></tr>
+                    <tr><th>Address</th><td><?= htmlspecialchars($student['address']) ?></td></tr>
                 </table>
 
             <?php elseif ($errorMsg): ?>
-                <p class="error-msg"><?= $errorMsg ?></p>
+                <p class="error-msg"><?= htmlspecialchars($errorMsg) ?></p>
 
             <?php else: ?>
                 <p class="info-msg">

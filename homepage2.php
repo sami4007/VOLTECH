@@ -1,11 +1,12 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_logged_in'])) {
-    header("Location: userLogin.php");
-    exit();
-} 
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
+    header("Location: home.php");
+    exit;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +22,8 @@ if (!isset($_SESSION['user_logged_in'])) {
     <a href="ustudentdetails.php">View Details</a>
     <a href="Payment.php">Payment</a>
     <a href="FeeStructure.php">Fee Details</a>
-    <a href="about.php">About</a>
-    <a href="userlogout.php">Log Out</a>
+    <a href="about2.php">About</a>
+    <a href="controllers/AuthController.php?action=logout">Logout</a>
 
     <!-- Right side text -->
     <span class="welcome-text2">

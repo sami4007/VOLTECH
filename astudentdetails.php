@@ -1,20 +1,33 @@
 <?php
 session_start();
-require_once "assets/database/dbconn.php";
 
 if (
-    !isset($_SESSION['admin_logged_in']) &&
-    !isset($_SESSION['mod_logged_in'])
+    !isset($_SESSION['role']) ||
+    !in_array($_SESSION['role'], ['admin', 'moderator'])
 ) {
-    header("Location: home.php");
-    exit();
+    header("Location: views/loginView.php");
+    exit;
+}
+
+require_once "assets/database/dbconn.php";
+
+$backLink = "views/loginView.php";
+
+if ($_SESSION['role'] === 'admin') {
+    $backLink = "homepage1.php";
+} elseif ($_SESSION['role'] === 'moderator') {
+    $backLink = "homepage3.php";
 }
 
 $student = null;
 $students = [];
 $msg = "";
 
-/* ================= SEARCH ================= */
+/*
+|--------------------------------------------------------------------------
+| SEARCH STUDENT
+|--------------------------------------------------------------------------
+*/
 if (isset($_POST['search'])) {
     $student_id = trim($_POST['student_id']);
 
@@ -34,7 +47,11 @@ if (isset($_POST['search'])) {
     }
 }
 
-/* ================= UPDATE ================= */
+/*
+|--------------------------------------------------------------------------
+| UPDATE STUDENT
+|--------------------------------------------------------------------------
+*/
 if (isset($_POST['update'])) {
 
     $stmt = $conn->prepare(
@@ -65,7 +82,11 @@ if (isset($_POST['update'])) {
     $msg = "Student record updated successfully.";
 }
 
-/* ================= DELETE ================= */
+/*
+|--------------------------------------------------------------------------
+| DELETE STUDENT
+|--------------------------------------------------------------------------
+*/
 if (isset($_POST['delete'])) {
 
     $stmt = $conn->prepare(
@@ -77,7 +98,11 @@ if (isset($_POST['delete'])) {
     $msg = "Student record deleted successfully.";
 }
 
-/* ================= SHOW ALL ================= */
+/*
+|--------------------------------------------------------------------------
+| SHOW ALL STUDENTS
+|--------------------------------------------------------------------------
+*/
 if (isset($_POST['showall'])) {
     $res = $conn->query("SELECT * FROM students");
     $students = $res->fetch_all(MYSQLI_ASSOC);
@@ -88,13 +113,13 @@ if (isset($_POST['showall'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Student Management</title>
+    <title>Student Management</title>
     <link rel="stylesheet" href="assets/css/astudentdetails.css">
 </head>
 <body>
 
 <div class="student-page">
-<h1>Admin Student Management</h1>
+<h1>Student Management</h1>
 
 <div class="content-wrapper">
 
@@ -106,22 +131,11 @@ if (isset($_POST['showall'])) {
     <label>Student ID</label>
     <input type="text" name="student_id" required>
 
-    <?php
-    // Decide back page based on role
-    $backPage = "home.php"; // fallback
-    if (isset($_SESSION['admin_logged_in'])) {
-    $backPage = "homepage1.php";
-    } elseif (isset($_SESSION['mod_logged_in'])) {
-    $backPage = "homepage3.php";
-   }
-  ?>
-
-<div class="btn-group">
-    <button name="search">Search</button>
-    <button name="showall">Show All</button>
-    <a href="<?= $backPage ?>" class="btn cancel-link">Back</a>
-</div>
-
+    <div class="btn-group">
+        <button name="search">Search</button>
+        <button name="showall">Show All</button>
+        <a href="<?php echo $backLink; ?>" class="btn">Back</a>
+    </div>
 </form>
 </div>
 
@@ -129,26 +143,28 @@ if (isset($_POST['showall'])) {
 <div class="result-section">
 
 <?php if ($msg): ?>
-    <p style="color:green;font-weight:bold;"><?= $msg ?></p>
+    <p style="color:green;font-weight:bold;">
+        <?php echo htmlspecialchars($msg); ?>
+    </p>
 <?php endif; ?>
 
 <!-- SINGLE STUDENT (EDIT MODE) -->
 <?php if ($student): ?>
 
 <form method="post">
-<input type="hidden" name="student_id" value="<?= htmlspecialchars($student['student_id']) ?>">
+<input type="hidden" name="student_id"
+       value="<?php echo htmlspecialchars($student['student_id']); ?>">
 
 <table class="student-table">
-<tr><th>Name</th><td><input name="student_name" value="<?= htmlspecialchars($student['student_name']) ?>"></td></tr>
-<tr><th>Father</th><td><input name="father_name" value="<?= htmlspecialchars($student['father_name']) ?>"></td></tr>
-<tr><th>Mother</th><td><input name="mother_name" value="<?= htmlspecialchars($student['mother_name']) ?>"></td></tr>
-<tr><th>Age</th><td><input name="age" value="<?= htmlspecialchars($student['age']) ?>"></td></tr>
-<tr><th>Phone</th><td><input name="phone_number" value="<?= htmlspecialchars($student['phone_number']) ?>"></td></tr>
-<tr><th>Email</th><td><input name="email" value="<?= htmlspecialchars($student['email']) ?>"></td></tr>
-<tr><th>Address</th><td><input name="address" value="<?= htmlspecialchars($student['address']) ?>"></td></tr>
+<tr><th>Name</th><td><input name="student_name" value="<?php echo htmlspecialchars($student['student_name']); ?>"></td></tr>
+<tr><th>Father</th><td><input name="father_name" value="<?php echo htmlspecialchars($student['father_name']); ?>"></td></tr>
+<tr><th>Mother</th><td><input name="mother_name" value="<?php echo htmlspecialchars($student['mother_name']); ?>"></td></tr>
+<tr><th>Age</th><td><input name="age" value="<?php echo htmlspecialchars($student['age']); ?>"></td></tr>
+<tr><th>Phone</th><td><input name="phone_number" value="<?php echo htmlspecialchars($student['phone_number']); ?>"></td></tr>
+<tr><th>Email</th><td><input name="email" value="<?php echo htmlspecialchars($student['email']); ?>"></td></tr>
+<tr><th>Address</th><td><input name="address" value="<?php echo htmlspecialchars($student['address']); ?>"></td></tr>
 </table>
 
-<!-- ACTION BUTTONS -->
 <div class="action-buttons">
     <button name="update" class="action-btn update-btn">Update</button>
     <button name="delete" class="action-btn delete-btn"
@@ -159,7 +175,7 @@ if (isset($_POST['showall'])) {
 
 </form>
 
-<!-- SHOW ALL -->
+<!-- SHOW ALL STUDENTS -->
 <?php elseif ($students): ?>
 
 <table class="student-table">
@@ -173,11 +189,11 @@ if (isset($_POST['showall'])) {
 
 <?php foreach ($students as $s): ?>
 <tr>
-    <td><?= $s['id'] ?></td>
-    <td><?= $s['student_id'] ?></td>
-    <td><?= $s['student_name'] ?></td>
-    <td><?= $s['phone_number'] ?></td>
-    <td><?= $s['email'] ?></td>
+    <td><?php echo $s['id']; ?></td>
+    <td><?php echo htmlspecialchars($s['student_id']); ?></td>
+    <td><?php echo htmlspecialchars($s['student_name']); ?></td>
+    <td><?php echo htmlspecialchars($s['phone_number']); ?></td>
+    <td><?php echo htmlspecialchars($s['email']); ?></td>
 </tr>
 <?php endforeach; ?>
 </table>
@@ -189,6 +205,6 @@ if (isset($_POST['showall'])) {
 </div>
 </div>
 </div>
-
+<script src="assets/js/studentAjax.js"></script>
 </body>
 </html>

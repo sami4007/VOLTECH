@@ -1,12 +1,15 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_logged_in'])) {
+
+/* ================= ACCESS CONTROL ================= */
+if (
+    !isset($_SESSION['role']) ||
+    $_SESSION['role'] !== 'user'
+) {
     header("Location: userLogin.php");
     exit();
-} 
-
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,11 +33,20 @@ if (!isset($_SESSION['user_logged_in'])) {
         <input type="number" id="totalCredit" placeholder="Enter total credits">
 
         <div class="btn-group">
-            <button type="button" onclick="window.location.href='homepage2.php'">Back</button>
-            <button type="button" onclick="calculateFee()">Submit</button>
-            <button type="button" onclick="clearFields()">Clear</button>
-            <button type="button" onclick="window.location.href='homepage2.php'">Next</button>
+            <button type="button"
+                    onclick="window.location.href='homepage2.php'">
+                Back
+            </button>
 
+            <button type="button"
+                    onclick="calculateFee()">
+                Submit
+            </button>
+
+            <button type="button"
+                    onclick="clearFields()">
+                Clear
+            </button>
         </div>
     </div>
 
@@ -43,7 +55,7 @@ if (!isset($_SESSION['user_logged_in'])) {
         <h2>Fee Breakdown</h2>
 
         <p><b>Admission Fee:</b> <span>25000</span></p>
-        <p><b>Tuition Fee: </b> <span id="tuitionFee">Per Credit Cost x Total Credits</span></p>
+        <p><b>Tuition Fee:</b> <span id="tuitionFee">Per Credit Cost × Total Credits</span></p>
         <p><b>Science Lab Fee:</b> <span>5000</span></p>
         <p><b>Annual Charge:</b> <span>1000</span></p>
 
@@ -55,7 +67,5 @@ if (!isset($_SESSION['user_logged_in'])) {
 </div>
 
 <script src="assets/js/FeeStructure.js"></script>
-
-
 </body>
 </html>

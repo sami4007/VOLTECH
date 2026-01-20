@@ -1,45 +1,5 @@
 <?php
 session_start();
-require_once "assets/database/dbconn.php";
-
-$errorMsg = "";
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    // Safety check
-    $username = isset($_POST['username']) ? trim($_POST['username']) : "";
-    $password = isset($_POST['password']) ? trim($_POST['password']) : "";
-
-    if ($username === "" || $password === "") {
-        $errorMsg = "All fields are required.";
-    } else {
-
-        $stmt = $conn->prepare(
-            "SELECT id FROM admin WHERE username = ? AND pass = ?"
-        );
-
-        if (!$stmt) {
-            die("SQL Prepare Failed: " . $conn->error);
-        }
-
-        $stmt->bind_param("ss", $username, $password);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows === 1) {
-
-            // ADMIN SESSION CREATED
-            $_SESSION['admin_logged_in'] = true;
-            $_SESSION['admin_username']  = $username;
-
-            header("Location: homepage1.php");
-            exit();
-
-        } else {
-            $errorMsg = "Invalid admin credentials.";
-        }
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,22 +10,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
 
+<?php
+if (isset($_SESSION['error'])) {
+    echo "<p style='color:red; text-align:center; font-weight:bold;'>
+            " . htmlspecialchars($_SESSION['error']) . "
+          </p>";
+    unset($_SESSION['error']);
+}
+?>
+
 <div class="admin-wrapper">
 <div class="admin-overlay">
 
-<form method="post" action="" id="adminLoginForm" class="admin-form">
+<form method="post" action="controllers/AuthController.php"
+      id="adminLoginForm" class="admin-form">
 
     <div class="form-row">
 
         <div class="form-left">
             <div class="field">
                 <label>Username</label>
-                <input type="text" name="username" id="adminUsername" autocomplete="off">
+                <input type="text" name="username" autocomplete="off" required>
             </div>
 
             <div class="field">
                 <label>Password</label>
-                <input type="password" name="password" id="adminPassword">
+                <input type="password" name="password" required>
             </div>
         </div>
 
@@ -74,12 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
 
     </div>
-
-    <?php if ($errorMsg): ?>
-        <p style="color:red;text-align:center;margin-top:10px;">
-            <?= htmlspecialchars($errorMsg) ?>
-        </p>
-    <?php endif; ?>
 
     <div class="button-group">
         <button type="submit" class="btn">Login</button>

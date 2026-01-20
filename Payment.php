@@ -1,19 +1,21 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_logged_in'])) {
-    header("Location: userLogin.php");
+
+if (
+    !isset($_SESSION['role']) ||
+    $_SESSION['role'] !== 'user'
+) {
+    header("Location: home.php");
     exit();
-} 
-
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Payment Portal</title>
-    <link rel="stylesheet" href="assets/css/Payment.css">
+n    <link rel="stylesheet" href="assets/css/Payment.css">
 </head>
 <body>
 
@@ -50,11 +52,11 @@ if (!isset($_SESSION['user_logged_in'])) {
         <h2>Card Details</h2>
 
         <input type="text" id="cardNumber" placeholder="16 Digit Card Number">
-   
+
         <div class="card-row">
-    <input type="text" id="expiryDate" placeholder="MM/YY">
-    <input type="password" id="cvv" placeholder="CVV">
-    </div>
+            <input type="text" id="expiryDate" placeholder="MM/YY">
+            <input type="password" id="cvv" placeholder="CVV">
+        </div>
 
         <input type="text" id="cardName" placeholder="Name on Card">
     </div>
@@ -68,9 +70,17 @@ if (!isset($_SESSION['user_logged_in'])) {
 
     <!-- BUTTONS -->
     <div class="btn-group">
-        <button type="button" onclick="window.location.href='homepage2.php'">Back</button>
-        <button type="button" onclick="confirmPayment()">Confirm</button>
-        <button type="button" onclick="window.location.href='homepage2.php'">Next</button>
+        <button type="button"
+                onclick="window.location.href='homepage2.php'">
+            Back
+        </button>
+
+        <button type="button"
+                onclick="confirmPayment()">
+            Confirm
+        </button>
+
+        
     </div>
 
 </div>

@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['admin_logged_in'])) {
-    header("Location: adminLogin.php");
-    exit();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: home.php");
+    exit;
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +22,8 @@ if (!isset($_SESSION['admin_logged_in'])) {
     <a href="astudentdetails.php">New Information</a>
     <a href="adminstudentreg.php">New Entry</a>
     <a href="adminfundmanage.php">Fund Management</a>
-    <a href="about.php">About</a>
-    <a href="adminlogout.php">Log Out</a>
+    <a href="about1.php">About</a>
+    <a href="controllers/AuthController.php?action=logout">Logout</a>
      
     <!-- Right side text -->
     <span class="welcome-text1">Welcome Admin</span>

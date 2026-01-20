@@ -1,11 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin_logged_in'])) {
-    header("Location: adminLogin.php");
-    exit();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: views/loginView.php");
+    exit;
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

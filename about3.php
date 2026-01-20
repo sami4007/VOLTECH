@@ -1,30 +1,22 @@
 <?php
 session_start();
 
-/* =========================
-   Access Guard
-========================= */
-if (
-    !isset($_SESSION['admin_logged_in']) &&
-    !isset($_SESSION['mod_logged_in']) &&
-    !isset($_SESSION['user_logged_in'])
-) {
-    header("Location: home.php");
-    exit();
+if (!isset($_SESSION['role'])) {
+    header("Location: views/loginView.php");
+    exit;
+}
+$backLink = "views/loginView.php";
+
+if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] === 'admin') {
+        $backLink = "homepage1.php";
+    } elseif ($_SESSION['role'] === 'moderator') {
+        $backLink = "homepage3.php";
+    } elseif ($_SESSION['role'] === 'user') {
+        $backLink = "homepage2.php";
+    }
 }
 
-/* =========================
-   Role-aware Back Link
-========================= */
-$backLink = "home.php";
-
-if (isset($_SESSION['admin_logged_in'])) {
-    $backLink = "homepage1.php";
-} elseif (isset($_SESSION['mod_logged_in'])) {
-    $backLink = "homepage3.php";
-} elseif (isset($_SESSION['user_logged_in'])) {
-    $backLink = "homepage2.php";
-}
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +46,7 @@ if (isset($_SESSION['admin_logged_in'])) {
 
     <!-- NEXT (router handles role) -->
     <button class="nav-btn next" onclick="goNext('about1.php')">Next</button>
+
 </div>
 
 <script>

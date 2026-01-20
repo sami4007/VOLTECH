@@ -1,41 +1,6 @@
 <?php
 session_start();
-require_once "assets/database/dbconn.php";
-
-$errorMsg = "";
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    $username = isset($_POST['username']) ? trim($_POST['username']) : "";
-    $password = isset($_POST['password']) ? trim($_POST['password']) : "";
-
-    if ($username === "" || $password === "") {
-        $errorMsg = "All fields are required.";
-    } else {
-
-        $stmt = $conn->prepare("SELECT * FROM moderator WHERE username = ? AND pass = ?");
-        $stmt->bind_param("ss", $username, $password);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows === 1) {
-
-            $_SESSION['mod_logged_in'] = true;
-            $_SESSION['mod_username']  = $username;
-
-            // 🔁 change destination later if you add a moderator homepage
-            header("Location: homepage3.php");
-            exit();
-
-        } else {
-            $errorMsg = "Invalid moderator credentials.";
-        }
-
-        $stmt->close();
-    }
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,27 +10,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
 
+<?php
+if (isset($_SESSION['error'])) {
+    echo "<p style='color:red; text-align:center; font-weight:bold;'>
+            " . htmlspecialchars($_SESSION['error']) . "
+          </p>";
+    unset($_SESSION['error']);
+}
+?>
+
 <div class="admin-wrapper">
     <div class="admin-overlay">
 
-        <form method="post" id="modLoginForm" class="admin-form" novalidate>
+        <form method="post"
+              action="controllers/AuthController.php"
+              id="modLoginForm"
+              class="admin-form"
+              novalidate>
 
             <div class="form-row">
                 <div class="form-left">
 
                     <div class="field">
                         <label>Moderator Username</label>
-                        <input type="text" name="username">
+                        <input type="text" name="username" autocomplete="off" required>
                     </div>
 
                     <div class="field">
                         <label>Password</label>
-                        <input type="password" name="password">
+                        <input type="password" name="password" required>
                     </div>
-
-                    <?php if ($errorMsg !== ""): ?>
-                        <p style="color:red;"><?php echo $errorMsg; ?></p>
-                    <?php endif; ?>
 
                 </div>
 

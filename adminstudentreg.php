@@ -1,11 +1,24 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin_logged_in'])) {
-    header("Location: adminLogin.php");
-    exit();
-}
 
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: home.php");
+    exit;
+}
 require_once "assets/database/dbconn.php";
+
+
+$backLink = "views/loginView.php";
+
+if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] === 'admin') {
+        $backLink = "homepage1.php";
+    } elseif ($_SESSION['role'] === 'user') {
+        $backLink = "homepage2.php";
+    } elseif ($_SESSION['role'] === 'moderator') {
+        $backLink = "homepage3.php";
+    }
+}
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
