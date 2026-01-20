@@ -83,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <div class="button-group">
         <button type="submit" class="btn">Login</button>
+        <a href="modLogin.php" class="btn">Moderator ?</a>
         <a href="home.php" class="btn">Back</a>
     </div>
 

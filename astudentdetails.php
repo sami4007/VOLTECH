@@ -2,10 +2,13 @@
 session_start();
 require_once "assets/database/dbconn.php";
 
-if (!isset($_SESSION['admin_logged_in'])) {
-    header("Location: adminLogin.php");
+if (
+    !isset($_SESSION['admin_logged_in']) &&
+    !isset($_SESSION['mod_logged_in'])
+) {
+    header("Location: home.php");
     exit();
-} 
+}
 
 $student = null;
 $students = [];
@@ -103,11 +106,22 @@ if (isset($_POST['showall'])) {
     <label>Student ID</label>
     <input type="text" name="student_id" required>
 
-    <div class="btn-group">
-        <button name="search">Search</button>
-        <button name="showall">Show All</button>
-        <a href="homepage1.php" class="btn cancel-link">Back</a>
-    </div>
+    <?php
+    // Decide back page based on role
+    $backPage = "home.php"; // fallback
+    if (isset($_SESSION['admin_logged_in'])) {
+    $backPage = "homepage1.php";
+    } elseif (isset($_SESSION['mod_logged_in'])) {
+    $backPage = "homepage3.php";
+   }
+  ?>
+
+<div class="btn-group">
+    <button name="search">Search</button>
+    <button name="showall">Show All</button>
+    <a href="<?= $backPage ?>" class="btn cancel-link">Back</a>
+</div>
+
 </form>
 </div>
 

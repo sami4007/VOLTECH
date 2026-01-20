@@ -3,7 +3,7 @@
 $conn = mysqli_connect("localhost", "root", "");
 
 if (!$conn) {
-    exit; // stop silently if connection fails
+    exit; // stop if connection fails
 }
 
 // Create database
@@ -12,9 +12,7 @@ mysqli_query($conn, "CREATE DATABASE IF NOT EXISTS voltech");
 // Select database
 mysqli_select_db($conn, "voltech");
 
-/* =========================
-   Table 1: User Login / Registration
-========================= */
+
 $sql1 = "CREATE TABLE IF NOT EXISTS regtable (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(50) NOT NULL,
@@ -25,10 +23,7 @@ $sql1 = "CREATE TABLE IF NOT EXISTS regtable (
 
 mysqli_query($conn, $sql1);
 
-/* =========================
-   Table 2: Student Registration
-   (based on your form image)
-========================= */
+
 $sql2 = "CREATE TABLE IF NOT EXISTS students (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     student_name VARCHAR(100) NOT NULL,
@@ -57,6 +52,21 @@ $sql4 = "INSERT IGNORE INTO admin (username, pass)
         ('nabil4007', 'nabil4007'),
         ('bn4007', 'bn4007')";
 mysqli_query($conn, $sql4);
+
+
+$sql5 = "CREATE TABLE IF NOT EXISTS moderator (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    pass VARCHAR(100) NOT NULL
+)";
+
+mysqli_query($conn, $sql5);
+
+
+$sql6 = "INSERT IGNORE INTO moderator (username, pass)
+         VALUES ('mod4007', 'mod4007')";
+
+mysqli_query($conn, $sql6);
 
 echo "<h3>Database setup completed successfully.</h3>";
 
