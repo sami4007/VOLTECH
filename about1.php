@@ -35,7 +35,7 @@ if (isset($_SESSION['role'])) {
 
     <div class="center-box">
         <p>
-            Welcome to Virtual Office of Link & Tech (VolTec), your centralized hub
+            Welcome to Virtual Operation and Learning Technology (VolTech), your centralized hub
             for academic excellence. We are committed to simplifying and enhancing
             your educational journey. Our platform empowers students, educators,
             and administrators alike.
