@@ -44,8 +44,8 @@ The system supports **Admin**, **Moderator**, and **User (Student)** roles with 
 
 ## 🔐 Authentication & Authorization
 
-- All authentication is handled centrally by `AuthController.php`
-- User credentials are validated using `models/User.php`
+- Authentication and authorization are handled through dedicated controllers (UserAuthController, AdminAuthController, and ModAuthController), ensuring role-based access control.
+- User credentials are validated using the models/user.php model.
 - Role is determined based on database table match:
   - `admin` → Admin
   - `moderator` → Moderator
@@ -78,7 +78,9 @@ This improves performance and user experience.
 
 ### Database Setup
 
-Run the following file:
+Run the following file initially:
 
 ```text
 assets/database/dbsetup.php
+
+Then project can be called from home.php
