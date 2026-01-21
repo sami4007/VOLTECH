@@ -78,12 +78,7 @@ This improves performance and user experience.
 
 ### Database Setup
 
-Run the following file initially:
+Project can be called from home.php but Run the following file initially:
 
 ```text
 assets/database/dbsetup.php
-
----
-
-```text
-Then Project can be called from home.php
