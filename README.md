@@ -83,4 +83,7 @@ Run the following file initially:
 ```text
 assets/database/dbsetup.php
 
-Then project can be called from home.php
+---
+
+```text
+Then Project can be called from home.php
