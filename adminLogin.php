@@ -22,7 +22,7 @@ if (isset($_SESSION['error'])) {
 <div class="admin-wrapper">
 <div class="admin-overlay">
 
-<form method="post" action="controllers/AuthController.php"
+<form method="post" action="controllers/AdminAuthController.php"
       id="adminLoginForm" class="admin-form">
 
     <div class="form-row">

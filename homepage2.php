@@ -23,11 +23,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
     <a href="Payment.php">Payment</a>
     <a href="FeeStructure.php">Fee Details</a>
     <a href="about2.php">About</a>
-    <a href="controllers/AuthController.php?action=logout">Logout</a>
+    <a href="controllers/UserAuthController.php?action=logout">Logout</a>
 
     <!-- Right side text -->
     <span class="welcome-text2">
-    Welcome <?php echo $_SESSION['username']; ?>
+    Welcome <?php echo htmlspecialchars($_SESSION['username']); ?>
+
 </span>
 
 </nav>

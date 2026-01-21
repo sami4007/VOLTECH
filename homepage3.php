@@ -21,7 +21,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'moderator') {
 <nav class="navbar">
     <a href="astudentdetails.php">New Information</a>
     <a href="about3.php">About</a>
-    <a href="controllers/AuthController.php?action=logout">Logout</a>
+    <a href="controllers/ModAuthController.php?action=logout">Logout</a>
      
     <!-- Right side text -->
     <span class="welcome-text1">Welcome Moderator</span>

@@ -24,7 +24,7 @@ if (isset($_SESSION['error'])) {
     <div class="user-overlay">
 
         <form method="post"
-              action="controllers/AuthController.php"
+              action="controllers/UserAuthController.php"
               id="userLoginForm"
               class="admin-form"
               novalidate>

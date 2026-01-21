@@ -23,7 +23,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     <a href="adminstudentreg.php">New Entry</a>
     <a href="adminfundmanage.php">Fund Management</a>
     <a href="about1.php">About</a>
-    <a href="controllers/AuthController.php?action=logout">Logout</a>
+    <a href="controllers/AdminAuthController.php?action=logout">Logout</a>
      
     <!-- Right side text -->
     <span class="welcome-text1">Welcome Admin</span>
