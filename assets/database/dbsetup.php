@@ -40,13 +40,13 @@ mysqli_query($conn, $sql2);
 
 $sql3 = "CREATE TABLE IF NOT EXISTS admin (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    pass VARCHAR(100) NOT NULL
+    adminuser VARCHAR(50) NOT NULL UNIQUE,
+    adminpass VARCHAR(100) NOT NULL
 )";
 
 mysqli_query($conn, $sql3);
 
-$sql4 = "INSERT IGNORE INTO admin (username, pass)
+$sql4 = "INSERT IGNORE INTO admin (adminuser, adminpass)
         VALUES 
         ('sami4007', 'sami4007'),
         ('nabil4007', 'nabil4007'),
@@ -56,14 +56,14 @@ mysqli_query($conn, $sql4);
 
 $sql5 = "CREATE TABLE IF NOT EXISTS moderator (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    pass VARCHAR(100) NOT NULL
+    moduser VARCHAR(50) NOT NULL UNIQUE,
+    modpass VARCHAR(100) NOT NULL
 )";
 
 mysqli_query($conn, $sql5);
 
 
-$sql6 = "INSERT IGNORE INTO moderator (username, pass)
+$sql6 = "INSERT IGNORE INTO moderator (moduser, modpass)
          VALUES ('mod4007', 'mod4007')";
 
 mysqli_query($conn, $sql6);
